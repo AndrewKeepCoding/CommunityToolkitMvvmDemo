@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "CommunityToolkitMvvmDemo (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "CommunityToolkitMvvmDemo (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

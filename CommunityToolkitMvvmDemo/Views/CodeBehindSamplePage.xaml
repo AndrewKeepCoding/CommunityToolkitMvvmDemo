@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page
+    x:Class="CommunityToolkitMvvmDemo.Views.CodeBehindSamplePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:CommunityToolkitMvvmDemo.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:CommunityToolkitMvvmDemo.Core.Models"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <Style TargetType="StackPanel">
+            <Setter Property="Spacing" Value="20" />
+        </Style>
+    </Page.Resources>
+
+    <StackPanel
+        Padding="20"
+        Orientation="Vertical">
+
+        <TextBlock
+            Style="{StaticResource HeaderTextBlockStyle}"
+            Text="Code-Behind Sample" />
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!--  Left Side  -->
+            <StackPanel Grid.Column="0">
+
+                <!--  New Member  -->
+                <StackPanel>
+                    <TextBlock
+                        Style="{StaticResource SubheaderTextBlockStyle}"
+                        Text="New Member" />
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox
+                            x:Name="NewMemberFirstNameTextBox"
+                            Header="First Name"
+                            TextChanged="NewMemberTextBox_TextChanged" />
+                        <TextBox
+                            x:Name="NewMemberMiddleNameTextBox"
+                            Header="Middle Name"
+                            TextChanged="NewMemberTextBox_TextChanged" />
+                        <TextBox
+                            x:Name="NewMemberLastNameTextBox"
+                            Header="Last Name"
+                            TextChanged="NewMemberTextBox_TextChanged" />
+                    </StackPanel>
+
+                    <TextBlock x:Name="NewMemberFullNameTextBox" />
+
+                    <Button
+                        x:Name="RegisterMemberButton"
+                        Click="RegisterMemberButton_Click"
+                        Content="Register" />
+                </StackPanel>
+
+                <!--  Edit Member  -->
+                <StackPanel>
+                    <TextBlock
+                        Style="{StaticResource SubheaderTextBlockStyle}"
+                        Text="Edit Member" />
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox
+                            x:Name="EdittingMemberFirstNameTextBox"
+                            Header="First Name"
+                            TextChanged="EdittingMemberTextBox_TextChanged" />
+                        <TextBox
+                            x:Name="EdittingMemberMiddleNameTextBox"
+                            Header="Middle Name"
+                            TextChanged="EdittingMemberTextBox_TextChanged" />
+                        <TextBox
+                            x:Name="EdittingMemberLastNameTextBox"
+                            Header="Last Name"
+                            TextChanged="EdittingMemberTextBox_TextChanged" />
+                    </StackPanel>
+                </StackPanel>
+
+                <!--  Remove Member  -->
+                <StackPanel>
+                    <TextBlock
+                        Style="{StaticResource SubheaderTextBlockStyle}"
+                        Text="Remove Member" />
+                    <Button
+                        x:Name="RemoveMemberButton"
+                        Click="RemoveMemberButton_Click"
+                        Content="Remove" />
+                </StackPanel>
+
+            </StackPanel>
+
+            <!--  Right Side  -->
+            <StackPanel Grid.Column="1">
+
+                <!--  Members List  -->
+                <StackPanel>
+                    <TextBlock
+                        Style="{StaticResource SubheaderTextBlockStyle}"
+                        Text="Members List" />
+                    <ListView
+                        x:Name="MembersListView"
+                        SelectionChanged="MembersListView_SelectionChanged">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="models:Member">
+                                <TextBlock>
+                                    <Run Text="{x:Bind FirstName, Mode=OneWay}" />
+                                    <Run Text="{x:Bind MiddleName, Mode=OneWay}" />
+                                    <Run Text="{x:Bind LastName, Mode=OneWay}" />
+                                </TextBlock>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+            </StackPanel>
+
+        </Grid>
+
+    </StackPanel>
+
+</Page>

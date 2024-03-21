@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page
+    x:Class="CommunityToolkitMvvmDemo.Views.MvvmSamplePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:boilerplate="using:CommunityToolkitMvvmDemo.Core.ViewModels.Boilerplate"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:CommunityToolkitMvvmDemo.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <Style TargetType="StackPanel">
+            <Setter Property="Spacing" Value="20" />
+        </Style>
+    </Page.Resources>
+
+    <StackPanel
+        Padding="20"
+        Orientation="Vertical">
+
+        <TextBlock
+            Style="{StaticResource HeaderTextBlockStyle}"
+            Text="MVVM Sample" />
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!--  Left Side  -->
+            <StackPanel Grid.Column="0">
+
+                <!--  New Member  -->
+                <StackPanel>
+                    <TextBlock
+                        Style="{StaticResource SubheaderTextBlockStyle}"
+                        Text="New Member" />
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox
+                            Header="First Name"
+                            Text="{x:Bind ViewModel.NewMemberFirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBox
+                            Header="Middle Name"
+                            Text="{x:Bind ViewModel.NewMemberMiddleName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBox
+                            Header="Last Name"
+                            Text="{x:Bind ViewModel.NewMemberLastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+                    <TextBlock Text="{x:Bind ViewModel.NewMemberFullName, Mode=OneWay}" />
+                    <Button
+                        Command="{x:Bind ViewModel.RegisterMemberCommand}"
+                        Content="Register" />
+                </StackPanel>
+
+                <!--  Edit Member  -->
+                <StackPanel>
+                    <TextBlock
+                        Style="{StaticResource SubheaderTextBlockStyle}"
+                        Text="Edit Member" />
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox
+                            Header="First Name"
+                            Text="{x:Bind ViewModel.SelectedMember.FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue=''}" />
+                        <TextBox
+                            Header="Middle Name"
+                            Text="{x:Bind ViewModel.SelectedMember.MiddleName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue=''}" />
+                        <TextBox
+                            Header="Last Name"
+                            Text="{x:Bind ViewModel.SelectedMember.LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue=''}" />
+                    </StackPanel>
+                </StackPanel>
+
+                <!--  Remove Member  -->
+                <StackPanel>
+                    <TextBlock
+                        Style="{StaticResource SubheaderTextBlockStyle}"
+                        Text="Remove Member" />
+                    <Button
+                        Command="{x:Bind ViewModel.RemoveMemberCommand}"
+                        CommandParameter="{x:Bind MembersListView.SelectedItem, Mode=OneWay}"
+                        Content="Remove" />
+                </StackPanel>
+
+            </StackPanel>
+
+            <!--  Right Side  -->
+            <StackPanel Grid.Column="1">
+
+                <!--  Members List  -->
+                <StackPanel>
+                    <TextBlock
+                        Style="{StaticResource SubheaderTextBlockStyle}"
+                        Text="Members List" />
+                    <ListView
+                        x:Name="MembersListView"
+                        ItemsSource="{x:Bind ViewModel.Members, Mode=OneWay}"
+                        SelectedItem="{x:Bind ViewModel.SelectedMember, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="boilerplate:MemberViewModel">
+                                <TextBlock Text="{x:Bind FullName, Mode=OneWay}" />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+            </StackPanel>
+
+        </Grid>
+
+    </StackPanel>
+
+</Page>
