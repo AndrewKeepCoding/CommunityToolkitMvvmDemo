@@ -108,7 +108,7 @@
                         SelectionChanged="MembersListView_SelectionChanged">
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="models:Member">
-                                <TextBlock>
+                                <TextBlock FontSize="30">
                                     <Run Text="{x:Bind FirstName, Mode=OneWay}" />
                                     <Run Text="{x:Bind MiddleName, Mode=OneWay}" />
                                     <Run Text="{x:Bind LastName, Mode=OneWay}" />

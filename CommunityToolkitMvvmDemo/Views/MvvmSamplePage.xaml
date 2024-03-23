@@ -100,7 +100,9 @@
                         SelectedItem="{x:Bind ViewModel.SelectedMember, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="boilerplate:MemberViewModel">
-                                <TextBlock Text="{x:Bind FullName, Mode=OneWay}" />
+                                <TextBlock
+                                    FontSize="30"
+                                    Text="{x:Bind FullName, Mode=OneWay}" />
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
