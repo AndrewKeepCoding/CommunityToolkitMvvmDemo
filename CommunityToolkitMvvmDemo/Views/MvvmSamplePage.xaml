@@ -7,6 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:CommunityToolkitMvvmDemo.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="using:CommunityToolkitMvvmDemo.Core.ViewModels.CommunityToolkit"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
@@ -99,7 +100,7 @@
                         ItemsSource="{x:Bind ViewModel.Members, Mode=OneWay}"
                         SelectedItem="{x:Bind ViewModel.SelectedMember, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                         <ListView.ItemTemplate>
-                            <DataTemplate x:DataType="boilerplate:MemberViewModel">
+                            <DataTemplate x:DataType="toolkit:MemberViewModel">
                                 <TextBlock
                                     FontSize="30"
                                     Text="{x:Bind FullName, Mode=OneWay}" />

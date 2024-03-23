@@ -1,4 +1,5 @@
-using CommunityToolkitMvvmDemo.Core.ViewModels.Boilerplate;
+//using CommunityToolkitMvvmDemo.Core.ViewModels.Boilerplate;
+using CommunityToolkitMvvmDemo.Core.ViewModels.CommunityToolkit;
 using Microsoft.UI.Xaml.Controls;
 
 namespace CommunityToolkitMvvmDemo.Views;
